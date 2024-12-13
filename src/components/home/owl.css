@@ -1,0 +1,23 @@
+.owl .item {
+    background: #4a90e2;
+    max-height: 100%;
+    color: #FFF;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  }
+
+  .button__previous {
+    display: flex;
+    flex-direction: row-reverse;
+    display: inline-block;
+    color: blue;
+
+  }
+
+  .button__next {
+    display: flex;
+    color: red;
+    right: -12px;
+  }
