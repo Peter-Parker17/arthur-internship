@@ -10,6 +10,7 @@ const HotCollections = () => {
   const [items, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +28,37 @@ const HotCollections = () => {
     fetchData();
   }, []);
 
+
+  useEffect(() => {
+    // Simulate data fetching
+    setTimeout(() => {
+      setData({ title: "Hello!" });
+      setLoading(false);
+    }, 5000); // Loading for 5 seconds
+  }, []);
+
+  if (loading) {
+    return <SkeletonLoader />;
+  }
+
+
+
+  const options = {
+    loop: true,
+    margin: 20,
+    nav: true,
+    navText: [
+      "<i class='fa fa-chevron-left'></i>",
+      "<i class='fa fa-chevron-right'></i>"
+    ],
+    dots: false,
+    responsive: {
+      0: { items: 1 },
+      600: { items: 2 },
+      1000: { items: 4 }
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -38,16 +70,19 @@ const HotCollections = () => {
           <div className="col-lg-12">
             <div className="text-center">
               <h2>Hot Collections</h2>
-                <div className="small-border bg-color-2"></div>
+              <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <OwlCarousel>
-          {items.map((item, index) => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
-              <div className="nft_coll">
+          <OwlCarousel className="owl-theme" {...options}>
+            <SkeletonLoader />
+            <SkeletonLoader />
+            <SkeletonLoader />
+            <SkeletonLoader />
+            {items.map((item, index) => (
+              <div className="nft_coll" key={index}>
                 <div className="nft_wrap">
                   <Link to="/item-details">
-                    <img src={`${item.nftImage}`} className="owl lazy img-fluid" alt="" />
+                    <img src={`${item.nftImage}`} className="lazy img-fluid" alt="" />
                   </Link>
                 </div>
                 <div className="nft_coll_pp">
@@ -63,15 +98,12 @@ const HotCollections = () => {
                   <span>{`ERC-${item.code}`}</span>
                 </div>
               </div>
-            </div>
-          ))}
-          <button className="button__previous" role="presentation">previous</button>
-          <button className="button__next" role="presentation">next</button>
+            ))}
           </OwlCarousel>
+        </div>
       </div>
-    </div>
-      </section >
-    );
-  };
+    </section >
+  );
+};
 
 export default HotCollections;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import '../home/owl.css'
 
@@ -27,6 +27,7 @@ const MyCarousel = () => {
     return (
         <div>
 
+            <button onClick={handlePrev}>Prev</button>
             <OwlCarousel className="owl" {...options}
                 items={1}
                 loop
@@ -39,14 +40,9 @@ const MyCarousel = () => {
                 <div>Item 1</div>
                 <div>Item 2</div>
                 <div>Item 3</div>
-            </OwlCarousel>
-
-            <button onClick={handlePrev}>Prev</button>
             <button onClick={handleNext}>Next</button>
-
+            </OwlCarousel>
         </div>
-
-
     );
 };
 
