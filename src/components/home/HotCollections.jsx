@@ -14,34 +14,28 @@ const HotCollections = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections'); // Replace with your API endpoint
-        const result = response.data
-        setItem(result);
-      } catch (err) {
-        setError('Error fetching data');
-      } finally {
-        setLoading(false);
-      }
+      // try {
+      //   const response = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections'); // Replace with your API endpoint
+      //   const result = response.data
+      //   setItem(result);
+      // } catch (err) {
+      //   setError('Error fetching data');
+      // } finally {
+      //   setLoading(false);
+      // }
     };
 
     fetchData();
   }, []);
 
 
-  useEffect(() => {
-    // Simulate data fetching
-    setTimeout(() => {
-      setData({ title: "Hello!" });
-      setLoading(false);
-    }, 5000); // Loading for 5 seconds
-  }, []);
-
-  if (loading) {
-    return <SkeletonLoader />;
-  }
-
-
+  // useEffect(() => {
+  //   // Simulate data fetching
+  //   setTimeout(() => {
+  //     setData({ title: "Hello!" });
+  //     setLoading(false);
+  //   }, 5000); // Loading for 5 seconds
+  // }, []);
 
   const options = {
     loop: true,
@@ -59,7 +53,9 @@ const HotCollections = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return <SkeletonLoader />;
+  }
   if (error) return <p>{error}</p>;
 
 
@@ -74,10 +70,6 @@ const HotCollections = () => {
             </div>
           </div>
           <OwlCarousel className="owl-theme" {...options}>
-            <SkeletonLoader />
-            <SkeletonLoader />
-            <SkeletonLoader />
-            <SkeletonLoader />
             {items.map((item, index) => (
               <div className="nft_coll" key={index}>
                 <div className="nft_wrap">
