@@ -5,25 +5,26 @@ import nftImage from "../../images/nftImage.jpg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Item = () => {
+
+const NewItems = () => {
   const [newItem, setItem] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
   useEffect(() => {
-    const fetchNewItem = async () => {
-      const data = await fetch('https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems')
-      const result = await data.json();
-      if (result) {
-          setItem(result);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections');
+        setItem(response.data);
+      } catch (err) {
+        setError('Error fetching data');
+      } finally {
+        setLoading(false);
       }
-
     };
-
-    fetchNewItem();
+    fetchData();
   }, []);
-}
-
-
-const NewItems = () => {  
+  
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
