@@ -13,7 +13,7 @@ const AuthorItems = () => {
               <div className="nft__item">
                 <div className="author_list_pp">
                   <Link to="">
-                    <img className="lazy" src={AuthorImage} alt="" />
+                    <img className="lazy" src={`${AuthorImage}`} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
@@ -37,7 +37,7 @@ const AuthorItems = () => {
                   </div>
                   <Link to="/item-details">
                     <img
-                      src={nftImage}
+                      src={`${nftImage}`}
                       className="lazy nft__item_preview"
                       alt=""
                     />

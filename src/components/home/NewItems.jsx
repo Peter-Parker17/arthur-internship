@@ -83,13 +83,13 @@ const NewItems = () => {
                         <button>Buy Now</button>
                         <div className="nft__item_share">
                           <h4>Share</h4>
-                          <a href="" target="_blank" rel="noreferrer">
+                          <a href="/" target="_blank" rel="noreferrer">
                             <i className="fa fa-facebook fa-lg"></i>
                           </a>
-                          <a href="" target="_blank" rel="noreferrer">
+                          <a href="/" target="_blank" rel="noreferrer">
                             <i className="fa fa-twitter fa-lg"></i>
                           </a>
-                          <a href="">
+                          <a href="/">
                             <i className="fa fa-envelope fa-lg"></i>
                           </a>
                         </div>
@@ -98,7 +98,7 @@ const NewItems = () => {
 
                     <Link to={`/item-details/${nft.nftId}`}>
                       <img
-                        src={nft.nftImage}
+                        src={`${nft.nftImage}`}
                         className="lazy nft__item_preview"
                         alt={nft.title}
                       />
@@ -106,9 +106,9 @@ const NewItems = () => {
                   </div>
                   <div className="nft__item_info">
                     <Link to={`/item-details/${nft.nftId}`}>
-                      <h4>{nft.title}</h4>
+                      <h4>{`${nft.title}`}</h4>
                     </Link>
-                    <div className="nft__item_price">{nft.price} ETH</div>
+                    <div className="nft__item_price">{`${nft.price}`} ETH</div>
                     <div className="nft__item_like">
                       <i className="fa fa-heart"></i>
                       <span>{nft.likes}</span>
