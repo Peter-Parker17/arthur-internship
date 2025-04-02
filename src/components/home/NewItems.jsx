@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import OwlCarousel from 'react-owl-carousel';
 import '../home/owl.css';
+import CountdownTimer from "./Countdown";
 
 
 const NewItems = () => {
@@ -44,8 +45,6 @@ const NewItems = () => {
     },
   };
 
-
-
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -75,8 +74,10 @@ const NewItems = () => {
                       <i className="fa fa-check"></i>
                     </Link>
                   </div>
-                  <div className="de_countdown">5h 30m 32s</div>
-
+                  {/* <div className="de_countdown">5h 30m 32s</div> */}
+                  <>
+                  <CountdownTimer />
+                  </>
                   <div className="nft__item_wrap">
                     <div className="nft__item_extra">
                       <div className="nft__item_buttons">
